@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周期表</title>
+
+<style>
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f6f9;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 60px);
+    grid-auto-rows: 60px;
+    gap: 4px;
+    justify-content: center;
+}
+
+.element {
+    background: white;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 12px;
+}
+
+.element:hover {
+    background: #e3e8ef;
+}
+
+.atomic-number {
+    font-size: 10px;
+    color: #555;
+}
+
+.symbol {
+    font-size: 16px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>周期表</h1>
+
+<div class="periodic-table" id="table"></div>
+
+<script>
+const elements = [
+"H","He",
+"Li","Be","B","C","N","O","F","Ne",
+"Na","Mg","Al","Si","P","S","Cl","Ar",
+"K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr",
+"Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe",
+"Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu",
+"Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn",
+"Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr",
+"Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"
+];
+
+const table = document.getElementById("table");
+
+elements.forEach((symbol, index) => {
+    const div = document.createElement("div");
+    div.className = "element";
+    div.innerHTML = `
+        <div class="atomic-number">${index + 1}</div>
+        <div class="symbol">${symbol}</div>
+    `;
+    div.onclick = () => {
+        window.location.href = "element-" + (index + 1) + ".html";
+    };
+    table.appendChild(div);
+});
+</script>
+
+</body>
+</html>
